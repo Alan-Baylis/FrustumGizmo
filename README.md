@@ -1,6 +1,5 @@
 # FrustumGizmo
-Unity script to visualize screen space on plane Y=0.
-
+Unity script to visualize screen space on plane Y.
 View frustum debugger
 
 Expanded from here:
