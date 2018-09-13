@@ -6,6 +6,7 @@ public class CameraFrustumGizmo : MonoBehaviour
     [ColorUsage(false)]
     public Color sphereColor;
     public float spheresRadius = 0.5f;
+    public float groundLevel = 0f;
 
     Camera camera;
 
@@ -94,25 +95,25 @@ public class CameraFrustumGizmo : MonoBehaviour
 
     void DrawGameViewGizmos()
     {
-        //create vector3 pos based on rays intersection with ground (0)
+        //create vector3 pos based on rays intersection with ground, usually  Y=0
         Ray bottomLeft = camera.ViewportPointToRay(new Vector3(0, 0, 0));
-        bottomLeftPosition_Screen = GetPointAtHeight(bottomLeft, 0);
+        bottomLeftPosition_Screen = GetPointAtHeight(bottomLeft, groundLevel);
         sphereBottomLeft.transform.position = bottomLeftPosition_Screen;
 
         Ray bottomRight = camera.ViewportPointToRay(new Vector3(1, 0, 0));
-        bottomRightPosition_Screen = GetPointAtHeight(bottomRight, 0);
+        bottomRightPosition_Screen = GetPointAtHeight(bottomRight, groundLevel);
         sphereBottomRight.transform.position = bottomRightPosition_Screen;
 
         Ray topRight = camera.ViewportPointToRay(new Vector3(1, 1, 0));
-        topRightPosition_Screen = GetPointAtHeight(topRight, 0);
+        topRightPosition_Screen = GetPointAtHeight(topRight, groundLevel);
         sphereTopRight.transform.position = topRightPosition_Screen;
 
         Ray topLeft = camera.ViewportPointToRay(new Vector3(0, 1, 0));
-        topLeftPosition_Screen = GetPointAtHeight(topLeft, 0);
+        topLeftPosition_Screen = GetPointAtHeight(topLeft, groundLevel);
         sphereTopLeft.transform.position = topLeftPosition_Screen;
 
         Ray center = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        centerPosition_Screen = GetPointAtHeight(center, 0);
+        centerPosition_Screen = GetPointAtHeight(center, groundLevel);
         sphereCenter.transform.position = centerPosition_Screen;
     }
 
